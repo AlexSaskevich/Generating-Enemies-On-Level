@@ -18,14 +18,14 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        CreateSpawnPointsArray();
+        Initialize();
 
         ShuffleArray();
 
         StartCoroutine(Spawn());
     }
 
-    private void CreateSpawnPointsArray()
+    private void Initialize()
     {
         _points = new Transform[_spawnPoints.childCount];
 
@@ -52,11 +52,13 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator Spawn()
     {
+        WaitForSeconds waitForSeconds = new WaitForSeconds(_secondsBetweenSpawn);
+
         for (int i = 0; i < _points.Length; i++)
         {
             Instantiate(_template, new Vector2(_points[i].transform.position.x, _points[i].transform.position.y), Quaternion.identity);
 
-            yield return new WaitForSeconds(_secondsBetweenSpawn);
+            yield return waitForSeconds;
         }
     }
 }
