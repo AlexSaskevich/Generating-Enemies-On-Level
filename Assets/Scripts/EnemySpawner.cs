@@ -6,7 +6,6 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private Enemy _enemy;
-    //[SerializeField] private SpriteRenderer _enemy;
     [SerializeField] private float _secondsBetweenSpawn = 2.0f;
 
     private Transform _spawnPoints;
