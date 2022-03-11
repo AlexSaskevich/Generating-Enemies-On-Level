@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _template;
+    [SerializeField] private Enemy _enemy;
+    //[SerializeField] private SpriteRenderer _enemy;
     [SerializeField] private float _secondsBetweenSpawn = 2.0f;
 
     private Transform _spawnPoints;
@@ -56,7 +57,7 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i = 0; i < _points.Length; i++)
         {
-            Instantiate(_template, new Vector2(_points[i].transform.position.x, _points[i].transform.position.y), Quaternion.identity);
+            Instantiate(_enemy, new Vector2(_points[i].transform.position.x, _points[i].transform.position.y), Quaternion.identity);
 
             yield return waitForSeconds;
         }
